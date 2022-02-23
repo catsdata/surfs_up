@@ -34,10 +34,92 @@ app = Flask(__name__)
 def welcome():
     return(
     '''
-    Welcome to the Climate Analysis API!
-    Available Routes:
-    /api/v1.0/precipitation
-    /api/v1.0/stations
-    /api/v1.0/tobs
+    Welcome to the Climate Analysis API!<br/>
+    Available Routes:<br/>
+    /api/v1.0/precipitation<br/>
+    /api/v1.0/stations<br/>
+    /api/v1.0/tobs<br/>
     /api/v1.0/temp/start/end
     ''')
+
+# create route to precip
+@app.route("/api/v1.0/precipitation")
+
+# create precip function
+def precipitation():
+
+    # calculate date and precip from a year ago
+    prev_year = dt.date(2017, 8, 23) - dt.timedelta(days=365)
+    precipitation = session.query(Measurement.date, Measurement.prcp).\
+      filter(Measurement.date >= prev_year).all()
+    # create a dictionary with the date as the key and the precipitation as the value
+    precip = {date: prcp for date, prcp in precipitation}
+    return jsonify(precip)
+
+# create route to stations
+@app.route("/api/v1.0/stations")
+
+# create precip function
+def stations():
+    
+    # create query to get all stations 
+    results = session.query(Station.station).all()
+    
+    # unravel results into one dim array with results as parameter
+    stations = list(np.ravel(results))
+    
+    # convert results into json list
+    return jsonify(stations=stations)    
+
+# create route to temp observations
+@app.route("/api/v1.0/tobs")
+
+# create temp function
+def temp_monthly():
+    
+    # calc one year ago
+    prev_year = dt.date(2017, 8, 23) - dt.timedelta(days=365)
+    
+    # query all temps from last year
+    results = session.query(Measurement.tobs).\
+      filter(Measurement.station == 'USC00519281').\
+      filter(Measurement.date >= prev_year).all()
+    
+    # unravel into one dimensional array
+    temps = list(np.ravel(results))
+    
+    # convert results into json list
+    return jsonify(temps=temps)
+
+# create route to stats with start and end dates
+@app.route("/api/v1.0/temp/<start>")
+@app.route("/api/v1.0/temp/<start>/<end>")
+
+# create stats function with start and end parameters
+def stats(start=None, end=None):
+    
+    # create query list from sqlite for max, min, avg
+    sel = [func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)]
+
+    # determine start/end dates, unravel into json; asterisk indicates multiple results
+    if not end:
+        results = session.query(*sel).\
+            filter(Measurement.date >= start).all()
+        temps = list(np.ravel(results))
+        return jsonify(temps=temps)
+    
+    # calculate temp stats with dates using sel list & unravel
+    results = session.query(*sel).\
+        filter(Measurement.date >= start).\
+        filter(Measurement.date <= end).all()
+    temps = list(np.ravel(results))
+    return jsonify(temps)   
+
+
+
+
+
+
+
+
+
