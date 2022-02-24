@@ -28,8 +28,24 @@ The purpose of the analysis is well defined
     
 ## Results
 
-There is a bulleted list that addresses the three key differences in weather between June and December
+Code:  [Surfs Up Challenge](https://github.com/catsdata/surfs_up/blob/main/SurfsUp_Challenge.ipynb)
+
+Stats on the Temps in June and December
+
+![June Temps](https://github.com/catsdata/surfs_up/blob/main/images/junestats.PNG)  ![December Temps](https://github.com/catsdata/surfs_up/blob/main/images/decstats.PNG)
+
+- Hotter
+- Average
+- 
+
+Stats on the Precipitation in June and December
+
+![June Precip](https://github.com/catsdata/surfs_up/blob/main/images/juneprecip.PNG)    ![December Precip](https://github.com/catsdata/surfs_up/blob/main/images/decprecip.PNG)
+
+- Wetter
+- Average
+- 
 
 ## Summary
 
-There is a high-level summary of the results and there are two additional queries to perform to gather more weather data for June and December
+There is a high-level summary of the results
