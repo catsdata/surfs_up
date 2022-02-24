@@ -13,27 +13,23 @@
 
 ## Overview
 
+The purpose of the analysis is well defined
 
 ## Resources
 
 - Data Sources: 
-    - [file](file)
+    - [SQLite Database](https://github.com/catsdata/surfs_up/blob/main/hawaii.sqlite)
 - Software:  
     - Jupyter Notebook 6.4.6
+    - SQLAlchemy 1.4.27
     - Python 3.7.11 with dependencies: 
-    -   matplot
         - pandas 1.3.5
         - numpy 1.20.3
-        - json 2.0.9
-        - re 2.2.1
-        - psycopg2 2.9.3 (dt dec pq3 ext lo64)
-    - SQLAlchemy 1.4.31
-    - PostgreSQL 12.9.1
-    - pgAdmin 4
     
 ## Results
 
-
+There is a bulleted list that addresses the three key differences in weather between June and December
 
 ## Summary
 
+There is a high-level summary of the results and there are two additional queries to perform to gather more weather data for June and December
