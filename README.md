@@ -32,18 +32,18 @@ Code:  [Surfs Up Challenge](https://github.com/catsdata/surfs_up/blob/main/Surfs
 
 We started by reflecting the SQLite database using SQLalchemy and Python and inspecting our table names.  We had station specific and measurement specific tables.  For this analysis, all the data we needed was contained in "measurement", which included the station ID, the date of the observation, the precipitation total of the day and the observed average temperature.  
 
-Using SQLalchemy to extract the measurement tablem, we first pulled all June temperature observations.  Taking the temps, we added them to a new list to create a June Temp dataframe, and then ran statistics to summarize the years worth of data.  We repeated these steps for December.  Below are our Temp stats.
+Using SQLalchemy to extract the measurement table, we first pulled all June temperature observations.  Taking the temps, we added them to a new list to create a June Temp dataframe, and then ran statistics to summarize the years worth of data.  We repeated these steps for December.  Below are our Temp stats.
 
 ![June Temps](https://github.com/catsdata/surfs_up/blob/main/images/junestats.PNG)  ![December Temps](https://github.com/catsdata/surfs_up/blob/main/images/decstats.PNG)
 
 - An immediate observation would be the data points for June being higher than December.  But from a previous research using our station table, we know that several weather stations can be inconsistent in their data output.  Since we're looking at averages over several years, this shouldn't skew the data too much.
-- June tends to be warmer than December with a minimum temp of 64, maximum of 85 and low standard deviation of 3.25 versus 56 min, 83 max and a higher stndardard deviation of 3.74.   
+- June tends to be warmer than December with a minimum temp of 64, maximum of 85 and low standard deviation of 3.25 versus 56 min, 83 max and a higher standard deviation of 3.74.   
 - June temps have an overall more pleasant range, however December is still somewhat ideal with an average of 71 degrees which is only 4 degrees less than June's average.  
 - We can see additional detail in a previous observation of monthly averages on temps; a large majority of data sits in between 67 and 81 degrees - perfect t-shirt weather.
 
 ![Freq](https://github.com/catsdata/surfs_up/blob/main/images/freq.PNG)
 
-Overall, Sales may be slower in December, but they wouldn't be non-existant based on the temps alone.  So we should also look at the precipitation as less customers will be surfing and eating ice cream if it's pouring rain.
+Overall, Sales may be slower in December, but they wouldn't be non-existent based on the temps alone.  So we should also look at the precipitation as less customers will be surfing and eating ice cream if it's pouring rain.
 
 Using the same process as we did for temps, we reran the data for average precipitation.  
 
